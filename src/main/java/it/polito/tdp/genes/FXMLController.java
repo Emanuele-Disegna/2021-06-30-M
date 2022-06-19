@@ -38,12 +38,23 @@ public class FXMLController {
 
     @FXML
     void doContaArchi(ActionEvent event) {
-
+    	model.creaGrafo();
+    	
+    	double soglia = Double.parseDouble(txtSoglia.getText());
+    	
+    	txtResult.setText("La soglia è nell'intervallo? "+model.rientraNellIntervallo(soglia)+"\n");
+    	
+    	txtResult.appendText("Il grafo contiene "+model.contaArchiMinori(soglia)+" archi dal peso minore "
+    			+ "e "+model.contaArchiMaggiori(soglia)+" archi dal peso maggiore\n");
+    	
+    	txtResult.appendText("Peso minimo: "+model.getPesoMinore()+"\n");
+    	txtResult.appendText("Peso massimo: "+model.getPesoMaggiore());
+    	
     }
 
     @FXML
     void doRicerca(ActionEvent event) {
-
+    	model.ricerca(Double.parseDouble(txtSoglia.getText()));
     }
 
     @FXML // This method is called by the FXMLLoader when initialization is complete
